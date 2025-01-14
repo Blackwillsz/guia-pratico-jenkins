@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_HOST = 'tcp://172.29.143.227:2376'  // Docker Daemon remoto, se necessário
+    }
+
     stages {
         stage('Build Docker Image') {
             steps {
