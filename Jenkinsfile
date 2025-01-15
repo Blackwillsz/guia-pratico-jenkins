@@ -30,7 +30,7 @@ pipeline {
                 tag_version = "${env.BUILD_ID}"
             }
             steps {
-                withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://172.29.143.227:6443']) {
+                withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'http://172.29.143.227:6443']) {
                     sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/deployment.yaml'
                     sh 'kubectl apply -f k8s/deployment.yaml'
                 }
